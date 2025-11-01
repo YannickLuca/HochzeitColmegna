@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zugang – Hochzeit Luana & Yannick</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f1eb;
+      --card: #ffffff;
+      --accent: #c7b29a;
+      --accent-dark: #9f8a74;
+      --text: #3f3a37;
+      --muted: #6f6864;
+      --shadow-card: 0 24px 50px rgba(47, 38, 33, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Work Sans', sans-serif;
+      margin: 0;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: clamp(1.5rem, 5vw, 3rem);
+      background: radial-gradient(circle at 20% 20%, rgba(199, 178, 154, 0.18), transparent 55%),
+                  radial-gradient(circle at 80% 0%, rgba(151, 132, 115, 0.12), transparent 60%),
+                  linear-gradient(135deg, #fdf7f2 0%, #ebe3da 100%);
+      color: var(--text);
+    }
+
+    .card {
+      width: min(100%, 420px);
+      background: var(--card);
+      border-radius: 1.5rem;
+      padding: clamp(2.2rem, 5vw, 2.75rem);
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.1rem, 4vw, 2.6rem);
+      color: #2f2a27;
+    }
+
+    p {
+      margin: 0.5rem 0 1.5rem;
+      color: var(--muted);
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(60, 52, 47, 0.2);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input[type="password"]:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(199, 178, 154, 0.25);
+    }
+
+    button {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 0.95rem 1rem;
+      border: 0;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      box-shadow: 0 16px 30px rgba(47, 38, 33, 0.18);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      background: var(--accent-dark);
+      box-shadow: 0 20px 36px rgba(47, 38, 33, 0.22);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .msg {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      min-height: 1.5em;
+      color: var(--muted);
+    }
+
+    .err {
+      color: #b3475b;
+    }
+
+    .hint {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1.5rem;
+      }
+
+      .card {
+        padding: 2rem 1.6rem;
+        border-radius: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🔒 Gäste-Zugang</h1>
+    <p>Bitte gib das Passwort ein.</p>
+    <form id="loginForm">
+      <input type="password" id="pwInput" placeholder="Passwort" autocomplete="current-password" required />
+      <button type="submit">Weiter</button>
+      <div class="msg" id="msg"></div>
+    </form>
+  </div>
+
+  <script>
+    // Passwort hier festlegen
+    const PASSWORD = "colmegna2026";
+
+    // Optional: Gültigkeitsdauer (in Stunden). 0 = nur aktuelle Sitzung.
+    const REMEMBER_HOURS = 24;
+
+    const form = document.getElementById('loginForm');
+    const input = document.getElementById('pwInput');
+    const msg = document.getElementById('msg');
+
+    // Wenn bereits freigeschaltet wurde, direkt weiter
+    try {
+      const token = JSON.parse(localStorage.getItem('guestAccess') || "null");
+      if (token && token.ok && (!token.exp || Date.now() < token.exp)) {
+        window.location.href = "index.html";
+      }
+    } catch(_) {}
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const pw = input.value.trim();
+
+      if (pw === PASSWORD) {
+        const data = { ok: true };
+        if (REMEMBER_HOURS > 0) {
+          data.exp = Date.now() + REMEMBER_HOURS * 60 * 60 * 1000;
+        }
+        localStorage.setItem('guestAccess', JSON.stringify(data));
+        window.location.href = "index.html";
+      } else {
+        msg.textContent = "Oops! Falsches Passwort.";
+        msg.className = "msg err";
+        input.value = "";
+        input.focus();
+      }
+    });
+  </script>
+</body>
+</html>
