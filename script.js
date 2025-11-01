@@ -1,4 +1,4 @@
-// 💍 Dynamische Navigation & Effekte für die Hochzeitswebsite
+// Dynamische Navigation & Effekte für die Hochzeitswebsite
 
 // Basisdomain für externe Links
 const baseDomain = "https://unser-liebesfest.ch";
@@ -15,7 +15,7 @@ document.querySelectorAll('nav a[data-section]').forEach(link => {
     }
 });
 
-// 🌸 Sanftes Scrollen für interne Links
+// Sanftes Scrollen für interne Links
 document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function (e) {
         e.preventDefault();
@@ -30,7 +30,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     });
 });
 
-// 💃 Dynamische Slideshow
+// Dynamische Slideshow
 const slideshowImages = [
     "Pictures/Tanz1.JPG",
     "Pictures/Tanz2.JPG",
@@ -64,7 +64,7 @@ if (slideshowElement) {
     setInterval(changeImage, 2500);
 }
 
-// 💞 Countdown zur Hochzeit
+// Countdown zur Hochzeit
 const countdownElement = document.getElementById("countdown");
 
 // Ziel-Datum (26. Juni 2026, 15:45 Uhr)
@@ -75,7 +75,7 @@ function updateCountdown() {
   const distance = targetDate - now;
 
   if (distance < 0) {
-    countdownElement.innerHTML = "💍 Heute ist unser grosser Tag! 💕";
+    countdownElement.textContent = "Heute ist unser großer Tag!";
     return;
   }
 

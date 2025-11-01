@@ -1,10 +1,10 @@
-/* 🌿 ========== GLOBAL STYLES ========== */
+/*  ========== GLOBAL STYLES ========== */
 :root {
     --color-bg: #f7f1eb;
     --color-text: #3f3a37;
     --color-muted: #6f6864;
-    --color-card: #ffffff;
-    --color-card-alt: #f4ede5;
+    --color-card: #fffaf5;
+    --color-card-alt: #f6efe7;
     --color-accent: #c7b29a;
     --color-accent-dark: #9f8a74;
     --color-highlight: #fbf6f0;
@@ -28,23 +28,19 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Alles linksbündig außer Header */
-.content-wrapper, section, footer {
+/* Linksbündige Grundausrichtung */
+.content-wrapper, section {
     text-align: left;
-}
-
-.hero {
-    text-align: center;
 }
 
 /* Für Mobilgeräte sicherstellen */
 @media (max-width: 700px) {
-    .content-wrapper, section, footer {
+    .content-wrapper, section {
         text-align: left !important;
     }
 }
 
-/* 💍 ========== HEADER ========== */
+/*  ========== HEADER ========== */
 .hero {
     position: relative;
     padding: clamp(3rem, 6vw, 5rem) 1.5rem clamp(3.5rem, 6vw, 5.5rem);
@@ -52,6 +48,7 @@ body {
                 linear-gradient(135deg, #fdf7f2 0%, #ebe3da 100%);
     color: var(--color-text);
     overflow: hidden;
+    text-align: center;
 }
 
 .hero::after {
@@ -78,6 +75,7 @@ body {
     font-size: clamp(1.4rem, 2.5vw, 1.9rem);
     font-weight: 500;
     color: var(--color-muted);
+    font-family: 'Playfair Display', serif;
 }
 
 .hero-image {
@@ -103,15 +101,48 @@ body {
     gap: 0.65rem;
     padding: 0.65rem 1.4rem;
     margin-top: 1.5rem;
-    background: rgba(255, 255, 255, 0.78);
-    color: var(--color-accent-dark);
-    border-radius: 999px;
+    background: var(--color-highlight);
+    color: var(--color-text);
+    border-radius: 18px;
     font-weight: 600;
-    letter-spacing: 0.04em;
-    box-shadow: 0 10px 25px rgba(47, 38, 33, 0.12);
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.03em;
+    box-shadow: 0 12px 28px rgba(47, 38, 33, 0.12);
 }
 
-/* 🌸 ========== MAIN CONTENT ========== */
+.section-nav {
+    margin: clamp(2rem, 4vw, 3rem) auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    max-width: 640px;
+}
+
+.section-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(47, 38, 33, 0.12);
+    background: rgba(255, 255, 255, 0.76);
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.section-nav a:hover,
+.section-nav a:focus-visible {
+    background: var(--color-highlight);
+    color: var(--color-accent-dark);
+    box-shadow: 0 12px 24px rgba(47, 38, 33, 0.15);
+    outline: none;
+}
+
+/*  ========== MAIN CONTENT ========== */
 .content-wrapper {
     width: min(100%, 1120px);
     margin: 0 auto;
@@ -180,7 +211,7 @@ section li {
     color: var(--color-muted);
 }
 
-/* 📸 ========== BILDERREIHEN ========== */
+/*  ========== BILDERREIHEN ========== */
 .bildreihe {
     display: flex;
     justify-content: center;
@@ -203,8 +234,9 @@ section li {
     transform: scale(1.03);
 }
 
-/* 🗺️ ========== KARTE ========== */
+/* ️ ========== KARTE ========== */
 .map-container {
+    position: relative;
     overflow: hidden;
     border-radius: 16px;
     margin: 1.5rem 0 2rem;
@@ -219,10 +251,50 @@ section li {
     border: 0;
 }
 
-/* 💍 ========== TEXT-BILD-KOMBI ========== */
+.map-marker {
+    position: absolute;
+    top: 46%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 3px solid #fff;
+    box-shadow: 0 8px 18px rgba(47, 38, 33, 0.28);
+}
+
+.map-marker::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -5%);
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-top-color: var(--color-accent);
+}
+
+.map-marker-label {
+    position: absolute;
+    top: 135%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--color-text);
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 6px 16px rgba(47, 38, 33, 0.15);
+}
+
+/*  ========== TEXT-BILD-KOMBI ========== */
 .text-bild-container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: clamp(1.75rem, 4vw, 2.5rem);
@@ -243,28 +315,38 @@ section li {
     line-height: 1.65;
 }
 
-/* 💕 ========== TRAUZEUGEN ========== */
+.text-bild-container ul {
+    flex: 1;
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+/*  ========== TRAUZEUGEN ========== */
 .trauzeugen-container {
     display: flex;
     justify-content: center;
+    align-items: stretch;
     flex-wrap: wrap;
     gap: 3rem;
     margin-top: 2rem;
 }
 
 .trauzeuge {
-    text-align: center;
-    background-color: #E9EDC9;
-    border-radius: 12px;
-    padding: 1.5rem;
-    width: 230px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    flex: 0 1 320px;
+    text-align: left;
+    background: var(--color-highlight);
+    border-radius: 16px;
+    padding: 2rem 1.75rem;
+    border: 1px solid var(--color-highlight-border);
+    box-shadow: 0 12px 28px rgba(47, 38, 33, 0.12);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .trauzeuge:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 16px 36px rgba(47, 38, 33, 0.16);
 }
 
 .trauzeuge img {
@@ -282,7 +364,7 @@ section li {
 }
 
 .trauzeuge p {
-    color: #555;
+    color: var(--color-muted);
     font-size: 0.95rem;
     line-height: 1.4;
 }
@@ -297,15 +379,36 @@ section li {
     color: #A48D94;
 }
 
-/* 💌 ========== FORMULAR ========== */
-.guest-form {
+
+.form-section {
+    padding: clamp(1.75rem, 4vw, 2.75rem);
     background: var(--color-card);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    box-shadow: var(--shadow-soft);
+    margin-top: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.form-section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 42px rgba(47, 38, 33, 0.12);
+}
+/*  ========== FORMULAR ========== */
+.form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 2.3vw, 2.2rem);
+    font-weight: 600;
+    margin: 3rem 0 1.5rem;
+    color: var(--color-text);
+    text-align: left;
+}
+
+.guest-form {
     padding: clamp(1.75rem, 3.5vw, 2.5rem);
     border-radius: 1.5rem;
-    width: min(100%, 640px);
-    margin: 0 auto;
-    box-shadow: var(--shadow-soft);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    background: transparent;
+    box-shadow: none;
+    border: none;
 }
 
 .guest-form label {
@@ -396,7 +499,7 @@ section li {
     padding: 1rem 1.25rem;
     border-radius: 1rem;
     font-weight: 600;
-    text-align: center;
+    text-align: left;
     border: 1px solid transparent;
 }
 
@@ -412,7 +515,7 @@ section li {
     border-color: rgba(179, 71, 91, 0.22);
 }
 
-/* 🕊️ ========== FOOTER ========== */
+/* ️ ========== FOOTER ========== */
 footer {
     text-align: center;
     padding: 2rem 1.5rem;
@@ -422,7 +525,7 @@ footer {
     border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* 💫 ========== SLIDESHOW ========== */
+/*  ========== SLIDESHOW ========== */
 .slideshow-container {
     text-align: center;
     margin: 2rem 0;
@@ -438,17 +541,10 @@ footer {
     transition: opacity 1.2s ease-in-out;
 }
 
-/* 💍 ========== COUNTDOWN ========== */
+/*  ========== COUNTDOWN ========== */
 #countdown {
-    margin-top: 1rem;
     font-size: 1.3rem;
-    font-weight: bold;
-    color: #6b5f63;
-    background-color: #E9EDC9;
-    display: inline-block;
-    padding: 0.6rem 1.2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
     animation: pulse 2s infinite ease-in-out;
 }
 
@@ -618,19 +714,35 @@ footer {
     50% { transform: scale(1.05); opacity: 1; }
 }
 
-/* 📱 ========== RESPONSIVE DESIGN ========== */
+/*  ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 700px) {
     .hero h1 { font-size: 2.1rem; }
     .hero-image { width: 100%; border-radius: 18px; }
     .content-wrapper { padding: 2rem 1.25rem 3rem; }
     section { padding: 1.25rem; }
+    .section-nav { gap: 0.5rem; }
+    .section-nav a { flex: 1 1 calc(50% - 0.5rem); }
     .bildreihe img { width: 100%; aspect-ratio: 16 / 9; }
     .map-container { height: 250px; border-radius: 10px; }
-    .text-bild-container { flex-direction: column; text-align: center; }
+    .text-bild-container { flex-direction: column; align-items: flex-start; text-align: left; }
     .text-bild-container img { width: 100%; max-width: 100%; }
     .trauzeugen-container { flex-direction: column; gap: 2rem; align-items: center; }
+    .rooms-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+    .room-card { padding: 1rem; }
     .slideshow-container img { max-width: 100%; border-radius: 10px; }
     .info-grid { grid-template-columns: 1fr; }
     .self-arranged-note { margin-left: 0; }
+}
+
+.section-centered {
+    text-align: center;
+}
+
+.section-centered p {
+    text-align: center;
+}
+
+.section-centered .slideshow-container img {
+    margin: 0 auto;
 }
 

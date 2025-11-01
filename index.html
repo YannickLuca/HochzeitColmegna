@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Einladung für die zivile Hochzeit</title>
+    <title>Einladung zum Hochzeitsfest</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,9 +17,9 @@
         const token = JSON.parse(localStorage.getItem('guestAccess') || "null");
         const ok = token && token.ok && (!token.exp || Date.now() < token.exp);
         if (!ok) {
-        window.location.replace("login.html");
+            window.location.replace("login.html");
         } else {
-        document.documentElement.style.visibility = "visible";
+            document.documentElement.style.visibility = "visible";
         }
     } catch(e){
         window.location.replace("login.html");
@@ -31,464 +31,467 @@
         <img src="Pictures/Antrag.jpg" alt="Das Brautpaar" class="hero-image">
         <h2>22. August 2026</h2>
         <p id="countdown" class="countdown"></p>
+        <nav class="section-nav" aria-label="Schnelleinstieg">
+            <a href="#location">Location</a>
+            <a href="#packliste">Packliste</a>
+            <a href="#ablauf">Ablauf</a>
+            <a href="#anreise">Anreise</a>
+            <a href="#rooms">Zimmer</a>
+            <a href="#trauzeugen">Trauzeugen</a>
+            <a href="#allgemeine-infos">Infos</a>
+            <a href="#ausfluege">Ausflüge</a>
+            <a href="#anmeldeFormular">Anmeldung</a>
+        </nav>
     </header>
 
     <main class="content-wrapper">
-        <section>
+        <section id="location">
             <h2>Location: Villa Porta</h2>
             <div class="text-bild-container">
                 <img src="Pictures/Villa Porta Eingang.jpg" alt="Chappeli" width="400">
                 <p>
-                   💍 Unser besonderer Ort: Villa Porta in Italien (kurz nach der Grenze vom Tessin)
-                   Für unseren großen Tag haben wir uns einen ganz besonderen Ort ausgesucht:
-                   Die romantische Villa Porta in Colmegna, in der Nähe von Luino IT, direkt am Ufer des Lago Maggiore.
-                   Eingebettet in einen privaten Park mit jahrhundertealten Bäumen, bietet die Villa nicht nur eine traumhafte Kulisse, sondern auch eine Atmosphäre, die genau zu uns passt – persönlich, herzlich und unvergesslich.
-                   Hier möchten wir mit euch feiern, lachen, tanzen und Erinnerungen schaffen, die für immer bleiben.
-                   Wir freuen uns darauf, diesen besonderen Ort mit unseren Lieblingsmenschen zu teilen – mit euch! ❤️
+                    Unser besonderer Ort: Villa Porta in Italien (kurz nach der Grenze zum Tessin).
+                    Für unseren grossen Tag haben wir uns einen Ort ausgesucht, der uns sofort verzaubert hat.
+                    Die romantische Villa Porta in Colmegna, direkt am Ufer des Lago Maggiore, bietet eine traumhafte Kulisse und eine Atmosphäre, die genau zu uns passt – persönlich, herzlich und unvergesslich.
+                    Hier möchten wir mit euch feiern, lachen, tanzen und Erinnerungen schaffen, die für immer bleiben.
+                    Wir freuen uns darauf, diesen besonderen Ort mit euch zu teilen.
                 </p>
             </div>
-
         </section>
 
-                <section>
+        <section id="packliste">
             <h2>Packliste – das solltet ihr mitbringen</h2>
             <div class="text-bild-container">
                 <img src="Pictures/Villa Porta See.webp" alt="Chappeli" width="400">
-            
-            <ul>
-                 <li>👗 Festliche Kleidung für die Trauung und das Abendessen</li>
-                 <li>👟 Bequeme Schuhe für den Park oder zum Tanzen</li>
-                 <li>🩱 Badebekleidung (es gibt Zugang zum See!)</li>
-                 <li>🌞 Sonnencreme & 😎 Sonnenbrille</li>
-                 <li>🧥 Eine leichte Jacke für den Abend</li>
-                 <li> Gute Laune und ganz viel Vorfreude</li>
-            </ul>
+                <ul>
+                    <li>Festliche Kleidung für die Trauung und das Abendessen</li>
+                    <li>Bequeme Schuhe für den Park oder zum Tanzen</li>
+                    <li>Badebekleidung (es gibt Zugang zum See!)</li>
+                    <li>Sonnencreme und Sonnenbrille</li>
+                    <li>Eine leichte Jacke für den Abend</li>
+                    <li>Gute Laune und ganz viel Vorfreude</li>
+                </ul>
             </div>
-
         </section>
 
-
-        <section>
+        <section id="ablauf">
             <h2>Ablauf</h2>
-            <h3>Freitagabend - Lockeres Welcome-Dinner</h3>
-            <p>Willkommen in Colmegna!
-               Für alle, die bereits am Freitagabend anreisen, möchten wir den Start ins Hochzeitswochenende ganz entspannt und gemeinsam mit euch einläuten.
-               Daher laden wir euch herzlich zu einem lockeren Willkommens-Dinner ein – ein Abend voller Vorfreude, gutem Essen, ersten Wiedersehen und gemütlichem Beisammensein.
-
-               📍 Ort & Uhrzeit folgen noch
-               🕗 Dresscode: Sommerlich-schick
-
-                Wir freuen uns darauf, den Abend vor dem großen Tag schon in schöner Runde mit euch zu verbringen!
+            <h3>Freitagabend – Lockeres Welcome-Dinner</h3>
+            <p>
+                Willkommen in Colmegna!
+                Für alle, die bereits am Freitagabend anreisen, möchten wir den Start ins Hochzeitswochenende ganz entspannt und gemeinsam mit euch beginnen.
+                Daher laden wir euch herzlich zu einem lockeren Willkommens-Dinner ein – ein Abend voller Vorfreude, gutem Essen, ersten Wiedersehen und gemütlichem Beisammensein.
+                Ort und Uhrzeit folgen noch.
             </p>
 
-
-
-            <h3>Samstag – Unser großer Tag</h3>
+            <h3>Samstag – Unser grosser Tag</h3>
             <p>
                 Am Samstag freuen wir uns darauf, mit euch unsere Liebe zu feiern – mit Blick auf den Lago Maggiore, guter Musik, feinem Essen und natürlich ganz viel Herzlichkeit.
             </p>
 
             <ul>
-              <li><strong>16:00 Uhr – Eintreffen der Gäste</strong><br>
-              Bitte findet euch oberhalb der <em>Limonaia</em> ein. Dort begrüßen wir euch herzlich und stimmen uns gemeinsam auf die Zeremonie ein.</li>
+                <li><strong>16:00 Uhr – Eintreffen der Gäste</strong><br>
+                Bitte findet euch oberhalb der <em>Limonaia</em> ein. Dort begrüssen wir euch herzlich und stimmen uns gemeinsam auf die Zeremonie ein.</li>
 
-              <li><strong>16:30 Uhr – Freie Trauung</strong><br>
-               Unsere Zeremonie beginnt pünktlich um 16:30 Uhr und dauert etwa 45 Minuten. Wir bitten euch, rechtzeitig da zu sein, damit wir gemeinsam starten können.</li>
+                <li><strong>16:30 Uhr – Freie Trauung</strong><br>
+                Unsere Zeremonie beginnt pünktlich um 16:30 Uhr und dauert etwa 45 Minuten. Wir bitten euch, rechtzeitig da zu sein, damit wir gemeinsam starten können.</li>
 
-              <li><strong>ca. 17:15 Uhr – Apéro</strong><br>
-               Nach der Trauung stoßen wir mit euch an, genießen kleine Köstlichkeiten und lassen den Moment wirken – mit Seeblick und Musik.</li>
+                <li><strong>ca. 17:15 Uhr – Apéro</strong><br>
+                Nach der Trauung stossen wir mit euch an, geniessen kleine Köstlichkeiten und lassen den Moment wirken – mit Seeblick und Musik.</li>
 
-              <li><strong>19:00 Uhr – Festliches Dinner</strong><br>
-               In der <em>Limonaia</em> erwartet euch ein feines Abendessen in stimmungsvoller Atmosphäre. Danach: Tanzen, feiern, lachen – bis spät in die Nacht!</li>
-               
-               📍 Ort & Uhrzeit folgen noch
-               🕗 Dresscode: Wir wünschen uns für unsere Hochzeit einen <strong>festlich-eleganten Look mit sommerlicher Leichtigkeit</strong>. Besonders freuen wir uns über Outfits in <strong>Pastell- und Naturtönen</strong>, die wunderbar mit dem Ambiente und unserem Farbkonzept harmonieren.
-
+                <li><strong>19:00 Uhr – Festliches Dinner</strong><br>
+                In der <em>Limonaia</em> erwartet euch ein feines Abendessen in stimmungsvoller Atmosphäre. Danach: Tanzen, feiern, lachen – bis spät in die Nacht!</li>
             </ul>
 
             <div class="bildreihe">
                 <img src="Pictures/VillaPorta.jpg" width="400">
                 <img src="Pictures/villa-porta-Limonaia.jpeg" width="400">
             </div>
-
         </section>
 
-       <section>
-             <h2>Anreise</h2>
+       <section id="anreise">
+            <h2>Anreise</h2>
 
-             <h3>Villa Porta, Colmegna</h3>
-              <p>
-               Unsere Hochzeitsfeier findet in der wunderschönen <strong>Villa Porta</strong> in <strong>Colmegna</strong> statt, direkt am Lago Maggiore in Italien.  
-               Die Villa liegt idyllisch am Seeufer und bietet eine traumhafte Kulisse für unseren besonderen Tag.
-                </p>
+            <h3>Villa Porta, Colmegna</h3>
+            <p>
+                Unsere Hochzeitsfeier findet in der wunderschönen Villa Porta in Colmegna statt, direkt am Lago Maggiore in Italien.
+                Die Villa liegt idyllisch am Seeufer und bietet eine traumhafte Kulisse für unseren besonderen Tag.
+            </p>
 
-             <p>
-              Von <strong>Zürich</strong> aus erreicht ihr die Villa Porta in etwa <strong>3 Stunden mit dem Auto</strong>.  
-              Eine gemütliche Anreise ist auch mit dem <strong>Zug via Lugano oder Bellinzona</strong> möglich – gerne geben wir euch auf Wunsch weitere Tipps.
-               </p>
+            <p>
+                Von Zürich aus erreicht ihr die Villa Porta in etwa 3 Stunden mit dem Auto.
+                Eine gemütliche Anreise ist auch mit dem Zug via Lugano oder Bellinzona möglich – gerne geben wir euch auf Wunsch weitere Tipps.
+            </p>
 
-               <p>
-               Parkplätze stehen direkt bei der Villa zur Verfügung.
-               </p>
+            <p>
+                Parkplätze stehen direkt bei der Villa zur Verfügung.
+            </p>
 
-             <div class="map-container">
-                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2780.835662266488!2d8.754169376146395!3d46.00724479409327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4785bd0a1bff3919%3A0x60d4589fc66a2d41!2sVilla%20Porta!5e0!3m2!1sde!2sch!4v1697970043706!5m2!1sde!2sch"  
-                 width="100%" 
-                 height="400" 
-                 style="border:0;" 
-                 allowfullscreen="" 
-                 loading="lazy" 
-                 referrerpolicy="no-referrer-when-downgrade">
-                 </iframe>
-               </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4317.750586100474!2d8.7483932!3d46.02544!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4785d02af0dcacbd%3A0xa6987feb15d8cc5e!2sRelais%20Villa%20Porta!5e1!3m2!1sde!2sch!4v1762015339495!5m2!1sde!2sch"
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
         </section>
 
+        <!-- ====================== ROOMS & AUSWAHL (KATEGORIEN) ====================== -->
+        <section id="rooms">
+            <h2>Rooms & Apartments Auswahl</h2>
+            <p class="small">
+                Villa Porta kontaktiert euch nach eurer Anmeldung per E-Mail (Zahlungsinfos folgen).
+                In einigen Zimmern (<em>nicht</em> Standard) sind Babybetten möglich (bis 4 J. ohne Aufpreis).
+                Zusätzlich zur Villa Porta haben wir noch zwei externe Hotels gebucht.
+            </p>
 
- <!-- ====================== ROOMS & AUSWAHL (KATEGORIEN) ====================== -->
-<section id="rooms">
-  <h2>Rooms & Apartments – Auswahl</h2>
-  <p class="small">
-    Villa Porta kontaktiert euch nach eurer Anmeldung per E-Mail (Zahlungsinfos folgen).
-    In einigen Zimmern (<em>nicht</em> Standard) sind Babybetten möglich (bis 4 J. ohne Aufpreis).
-    Zusätzlich zur Villa Porta haben wir noch zwei externe Hotels gebucht.
-  </p>
+            <!-- Kartenraster wird unten per JS gerendert -->
+            <div id="roomsGrid" class="rooms-grid"></div>
+        </section>
 
-  <!-- Kartenraster wird unten per JS gerendert -->
-  <div id="roomsGrid" class="rooms-grid"></div>
-
-</section>
-
-        <section>
+        <section id="trauzeugen">
             <h2>Unsere Trauzeugen</h2>
             <p>Simona und Philipp stehen euch gerne für Spezialanliegen zur Verfügung. 
                 Falls Unklarheiten bestehen oder ihr sonstige Fragen habt, meldet euch ungeniert bei unseren Lieben:</p>
 
             <div class="trauzeugen-container">
-                <!-- 💐 Simona -->
                 <div class="trauzeuge">
                     <img src="Pictures/Simona.jpg" alt="Simona" width="200">
                     <h3>Simona</h3>
-                    <p>📞 +41 79 430 81 30<br>
-                    ✉️ <a href="mailto:simona.patt@gmail.com">simona.patt@gmail.com</a></p>
+                    <p>
+                        Telefon: +41 79 430 81 30<br>
+                        E-Mail: <a href="mailto:simona.patt@gmail.com">simona.patt@gmail.com</a>
+                    </p>
                 </div>
 
-                <!-- 🤵 Philipp -->
                 <div class="trauzeuge">
                     <img src="Pictures/Philipp.jpg" alt="Philipp" width="200">
                     <h3>Philipp</h3>
-                    <p>📞 +41 79 222 09 62<br>
-                    ✉️ <a href="mailto:philipp.moebus@gmx.ch">philipp.moebus@gmx.ch</a></p>
+                    <p>
+                        Telefon: +41 79 222 09 62<br>
+                        E-Mail: <a href="mailto:philipp.moebus@gmx.ch">philipp.moebus@gmx.ch</a>
+                    </p>
                 </div>
             </div>
         </section>
 
-  <section id="allgemeine-infos">
-    <h2>Allgemeine Infos für das Wochenende</h2>
-    <div class="info-grid">
-      <article class="info-card highlight">
-        <h3>Handys bewusst nutzen</h3>
-        <p>
-          Wir freuen uns mehr über echte Momente als über Displays. Fotos macht unser Fotograf – ihr dürft einfach
-          genießen. Wenn ihr doch ein Bild knipst, gern später mit uns teilen.
+        <section id="allgemeine-infos">
+            <h2>Allgemeine Infos für das Wochenende</h2>
+            <div class="info-grid">
+                <article class="info-card highlight">
+                    <h3>Handys bewusst nutzen</h3>
+                    <p>
+                        Wir freuen uns mehr über echte Momente als über Displays. Fotos macht unser Fotograf – ihr dürft einfach
+                        geniessen. Wenn ihr doch ein Bild knipst, gern später mit uns teilen.
+                    </p>
+                </article>
+                <article class="info-card highlight">
+                    <h3>Kinder sind herzlich willkommen</h3>
+                    <p>
+                        Unsere kleinen Gäste dürfen mitfeiern, planschen und spielen. Bitte tragt Kinder im Formular ein, damit wir
+                        Sitzplätze, Babysitter-Möglichkeiten und Kinderportionen besser planen können.
+                    </p>
+                </article>
+                <article class="info-card highlight">
+                    <h3>Dresscode</h3>
+                    <p><strong>Freitag:</strong> Sommerlich-schick und entspannt.</p>
+                    <p><strong>Samstag:</strong> Festlich-elegant mit leichten Pastell- oder Naturtönen.</p>
+                    <p>Abends kann es am See frisch werden – ein leichtes Jäckchen lohnt sich.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="ausfluege">
+            <h2>Ausflüge rund um den Lago Maggiore</h2>
+            <p>
+                Nutzt das Wochenende, um ein wenig Dolce Vita zu tanken. Ob gemütlich auf dem See oder aktiv in den Bergen – 
+                hier sind unsere liebsten Ideen in der Nähe von Luino.
+            </p>
+
+            <div class="info-grid">
+                <article class="info-card">
+                    <h3>Schifffahrt zu den Borromäischen Inseln</h3>
+                    <p>Mit dem Boot ab Luino oder Laveno zu Isola Bella &amp; Co. – Palazzi, Gärten und Gelato inklusive.</p>
+                    <ul>
+                        <li>Fahrtzeit: ca. 40&nbsp;Minuten</li>
+                        <li>Tipp: Tickets vorab online reservieren</li>
+                    </ul>
+                </article>
+
+                <article class="info-card">
+                    <h3>Markttag in Luino</h3>
+                    <p>
+                        Mittwochs wird die Altstadt zum bunten Wochenmarkt mit regionalen Spezialitäten, Stoffen und Mode.
+                    </p>
+                    <ul>
+                        <li>09:00–16:00 Uhr</li>
+                        <li>Beste Zeit: Vormittag, wenn es noch nicht so voll ist</li>
+                    </ul>
+                </article>
+
+                <article class="info-card">
+                    <h3>Wanderung zum Sacro Monte</h3>
+                    <p>
+                        UNESCO-Weltkulturerbe oberhalb von Varese. Kurze, aber aussichtsreiche Tour mit charmanten Kapellen.
+                    </p>
+                    <ul>
+                        <li>Gehzeit: ca. 1,5&nbsp;Stunden</li>
+                        <li>Bequeme Schuhe &amp; Wasser einpacken</li>
+                    </ul>
+                </article>
+
+                <article class="info-card">
+                    <h3>Badestopp in Maccagno</h3>
+                    <p>
+                        Kleiner Strand mit kristallklarem Wasser. Perfekt zum Schwimmen, Stand-up-Paddeln oder Aperitivo in der Bar.
+                    </p>
+                    <ul>
+                        <li>Liegt nördlich von Luino</li>
+                        <li>Parkplätze direkt am See</li>
+                    </ul>
+                </article>
+            </div>
+
+            <p>Weitere Ausflüge folgen.</p>
+        </section>
+
+        <!-- ===================== ANMELDEFORMULAR ===================== -->
+        <section class="form-section">
+            <h2 class="form-title">Anmeldeformular</h2>
+
+            <form id="anmeldeFormular" class="guest-form" autocomplete="on">
+                <label for="name">Name:</label><br/>
+                <input type="text" id="name" name="name" autocomplete="name" required/><br/><br/>
+
+                <label for="email">E-Mail-Adresse:</label><br/>
+                <input type="email" id="email" name="email" autocomplete="email" required/><br/><br/>
+
+                <label for="handy">Handynummer:</label><br/>
+                <input type="tel" id="handy" name="handy" inputmode="tel" autocomplete="tel" required/><br/><br/>
+
+                <label for="kidsCount">Kinder – Anzahl:</label><br/>
+                <input type="number" id="kidsCount" name="kidsCount" min="0" max="10" step="1" value="0" required/>
+                <small>(Altersfelder erscheinen automatisch)</small>
+                <div id="kidsAgesContainer" class="kids-ages"></div>
+                <br/>
+
+                <label for="address">Genaue Wohnadresse (Stand September 2026):</label><br/>
+                <input type="text" id="address" name="address" autocomplete="street-address" required/><br/><br/>
+
+                <fieldset class="prio-fieldset">
+                    <legend>Prioritäten – Zimmer / Apartments</legend>
+
+                    <label for="prio1">Prio 1:</label><br/>
+                    <select id="prio1" name="prio1" required></select><br/><br/>
+
+                    <label for="prio2">Prio 2:</label><br/>
+                    <select id="prio2" name="prio2" required></select><br/><br/>
+
+                    <label for="prio3">Prio 3:</label><br/>
+                    <select id="prio3" name="prio3" required></select><br/><br/>
+
+                    <div class="self-arranged">
+                        <label class="self-arranged-toggle">
+                            <input type="checkbox" id="selfArranged" name="selfArranged"/>
+                            <span>Ich kümmere mich selbst (kein Zimmer nötig)</span>
+                        </label>
+                        <p class="self-arranged-note">Wenn gewählt, werden die Prio-Listen deaktiviert.</p>
+                    </div>
+                </fieldset>
+                <br/>
+
+                <label for="nachricht">Ernährung/Allergien oder Nachricht:</label><br/>
+                <textarea id="nachricht" name="nachricht" rows="3" placeholder="z. B. vegetarisch, Nussallergie "></textarea><br/><br/>
+
+                <button type="submit" class="submit-button" data-default="Anmelden" data-loading="Wird gesendet ">
+                    <span class="submit-label">Anmelden</span>
+                    <span class="submit-loading" aria-hidden="true">Wird gesendet </span>
+                </button>
+            </form>
+        </section>
+
+        <p id="erfolgsmeldung" class="form-message success" role="status" aria-live="polite" hidden>
+            Vielen Dank! Deine Anmeldung wurde erfolgreich gespeichert.
         </p>
-      </article>
-      <article class="info-card highlight">
-        <h3>Kinder sind herzlich willkommen</h3>
-        <p>          Unsere kleinen Gäste dürfen mitfeiern, planschen und spielen. Bitte tragt Kinder im Formular ein, damit wir
-          Sitzplätze, Babysitter-Möglichkeiten und Kinderportionen besser planen können.
-        </p>
-      </article>
-      <article class="info-card highlight">
-        <h3>Dresscode</h3>
-        <p>
-          Sommerlich elegant und gerne farbenfroh. Abends kann es am See frisch werden – ein leichtes Jäckchen lohnt
-          sich.
-        </p>
-      </article>
-    </div>
-  </section>
+        <p id="fehlermeldung" class="form-message error" role="alert" aria-live="assertive" hidden></p>
 
-          <section id="ausfluege">
-    <h2>Ausflüge rund um den Lago Maggiore</h2>
-    <p>
-      Nutzt das Wochenende, um ein wenig Dolce Vita zu tanken. Ob gemütlich auf dem See oder aktiv in den Bergen –
-      hier sind unsere liebsten Ideen in der Nähe von Luino.
-    </p>
-    <div class="info-grid">
-      <article class="info-card">
-        <h3>Schifffahrt zu den Borromäischen Inseln</h3>
-        <p>Mit dem Boot ab Luino oder Laveno zu Isola Bella &amp; Co. – Palazzi, Gärten und Gelato inklusive.</p>
-        <ul>
-          <li>Fahrtzeit: ca. 40&nbsp;Minuten</li>
-          <li>Tipp: Tickets vorab online reservieren</li>
-        </ul>
-      </article>
-      <article class="info-card">
-        <h3>Markttag in Luino</h3>
-        <p>
-          Mittwochs wird die Altstadt zum bunten Wochenmarkt mit regionalen Spezialitäten, Stoffen und Mode.
-        </p>
-        <ul>
-          <li>09:00–16:00 Uhr</li>
-          <li>Beste Zeit: Vormittag, wenn es noch nicht so voll ist</li>
-        </ul>
-      </article>
-      <article class="info-card">
-        <h3>Wanderung zum Sacro Monte</h3>
-        <p>
-          UNESCO-Weltkulturerbe oberhalb von Varese. Kurze, aber aussichtsreiche Tour mit charmanten Kapellen.
-        </p>
-        <ul>
-          <li>Gehzeit: ca. 1,5&nbsp;Stunden</li>
-          <li>Bequeme Schuhe &amp; Wasser einpacken</li>
-        </ul>
-      </article>
-      <article class="info-card">
-        <h3>Badestopp in Maccagno</h3>
-        <p>
-          Kleiner Strand mit kristallklarem Wasser. Perfekt zum Schwimmen, Stand-up-Paddeln oder Aperitivo in der Bar.
-        </p>
-        <ul>
-          <li>Liegt nördlich von Luino</li>
-          <li>Parkplätze direkt am See</li>
-        </ul>
-      </article>
-    </div>
-  </section>
+        <section id="abschluss" class="section-centered closing-section">
+            <h3>Wir freuen uns mit euch anzustossen! Bis dann!</h3>
+            <div class="slideshow-container">
+                <img id="slideshow" src="Pictures/Tanz1.JPG" alt="Tanzbilder Slideshow" width="800"/>
+            </div>
+        </section>
+    </main>
 
-<!-- ===================== ANMELDEFORMULAR ===================== -->
-  <form id="anmeldeFormular" class="guest-form" autocomplete="on">
-    <label for="name">Name:</label><br/>
-    <input type="text" id="name" name="name" autocomplete="name" required/><br/><br/>
+    <footer>
+        &copy; 2025 &amp; 2026 - Luana &amp; Yannick - Colmegna
+    </footer>
 
-    <label for="email">E-Mail Adresse:</label><br/>
-    <input type="email" id="email" name="email" autocomplete="email" required/><br/><br/>
+    <!-- ========= Firebase (Form Handling) ========= -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+      import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
-    <label for="handy">Handynummer:</label><br/>
-    <input type="tel" id="handy" name="handy" inputmode="tel" autocomplete="tel" required/><br/><br/>
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0ZTfty-ZBe_bbR1vZyMk4ufE1MndvX1c",
+        authDomain: "hochzeitcolmegna.firebaseapp.com",
+        projectId: "hochzeitcolmegna",
+        storageBucket: "hochzeitcolmegna.firebasestorage.app",
+        messagingSenderId: "57965593719",
+        appId: "1:57965593719:web:eae806a82f5d9bc211b272"
+      };
 
-    <label for="kidsCount">Kinder - Anzahl:</label><br/>
-    <input type="number" id="kidsCount" name="kidsCount" min="0" max="10" step="1" value="0" required/>
-    <small>(Altersfelder erscheinen automatisch)</small>
-    <div id="kidsAgesContainer" class="kids-ages"></div>
-    <br/>
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
 
-    <label for="address">Genaue Wohnadresse (Stand September 2026):</label><br/>
-    <input type="text" id="address" name="address" autocomplete="street-address" required/><br/><br/>
+      const form = document.getElementById("anmeldeFormular");
+      const successMessage = document.getElementById("erfolgsmeldung");
+      const errorMessage = document.getElementById("fehlermeldung");
+      const submitButton = form?.querySelector(".submit-button");
+      const submitLabel = submitButton?.querySelector(".submit-label");
+      const submitLoading = submitButton?.querySelector(".submit-loading");
+      const roomSelectIds = ["prio1", "prio2", "prio3"];
 
-    <fieldset class="prio-fieldset">
-      <legend>Prioritäten – Zimmer / Apartments</legend>
-
-      <label for="prio1">Prio 1:</label><br/>
-      <select id="prio1" name="prio1" required></select><br/><br/>
-
-      <label for="prio2">Prio 2:</label><br/>
-      <select id="prio2" name="prio2" required></select><br/><br/>
-
-      <label for="prio3">Prio 3:</label><br/>
-      <select id="prio3" name="prio3" required></select><br/><br/>
-
-      <div class="self-arranged">
-        <label class="self-arranged-toggle">
-          <input type="checkbox" id="selfArranged" name="selfArranged"/>
-          <span>Ich kümmere mich selbst (kein Zimmer nötig)</span>
-        </label>
-        <p class="self-arranged-note">Wenn gewählt, werden die Prio-Listen deaktiviert.</p>
-      </div>
-    </fieldset>
-    <br/>
-
-    <label for="nachricht">Ernährung/Allergien oder Nachricht:</label><br/>
-    <textarea id="nachricht" name="nachricht" rows="3" placeholder="z. B. vegetarisch, Nussallergie …"></textarea><br/><br/>
-
-    <button type="submit" class="submit-button" data-default="Anmelden" data-loading="Wird gesendet …">
-      <span class="submit-label">Anmelden</span>
-      <span class="submit-loading" aria-hidden="true">Wird gesendet …</span>
-    </button>
-  </form>
-
-  <p id="erfolgsmeldung" class="form-message success" role="status" aria-live="polite" hidden>
-    Vielen Dank! Deine Anmeldung wurde erfolgreich gespeichert.
-  </p>
-  <p id="fehlermeldung" class="form-message error" role="alert" aria-live="assertive" hidden></p>
-
-  <section>
-    <h3>Wir freuen uns mit euch anzustossen! Bis dann!</h3>
-    <div class="slideshow-container">
-      <img id="slideshow" src="Pictures/Tanz1.JPG" alt="Tanzbilder Slideshow" width="800"/>
-    </div>
-  </section>
-</main>
-
-<footer>
-  &copy; 2025 &amp; 2026 – Luana &amp; Yannick – Colmegna
-</footer>
-
-
-<!-- ========= Firebase (Form Handling) ========= -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyD0ZTfty-ZBe_bbR1vZyMk4ufE1MndvX1c",
-    authDomain: "hochzeitcolmegna.firebaseapp.com",
-    projectId: "hochzeitcolmegna",
-    storageBucket: "hochzeitcolmegna.firebasestorage.app",
-    messagingSenderId: "57965593719",
-    appId: "1:57965593719:web:eae806a82f5d9bc211b272"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  const form = document.getElementById("anmeldeFormular");
-  const successMessage = document.getElementById("erfolgsmeldung");
-  const errorMessage = document.getElementById("fehlermeldung");
-  const submitButton = form?.querySelector(".submit-button");
-  const submitLabel = submitButton?.querySelector(".submit-label");
-  const submitLoading = submitButton?.querySelector(".submit-loading");
-  const roomSelectIds = ["prio1", "prio2", "prio3"];
-
-  const setButtonState = (isSubmitting) => {
-    if (!submitButton) return;
-    submitButton.disabled = isSubmitting;
-    submitButton.classList.toggle("is-loading", isSubmitting);
-    if (submitLabel && submitLoading) {
-      submitLabel.hidden = isSubmitting;
-      submitLoading.hidden = !isSubmitting;
-    }
-  };
-
-  const clearMessages = () => {
-    if (successMessage) successMessage.hidden = true;
-    if (errorMessage) {
-      errorMessage.hidden = true;
-      errorMessage.textContent = "";
-    }
-  };
-
-  const collectKidsAges = (count) => {
-    const inputs = Array.from(document.querySelectorAll(".kids-ages input[type='number']"));
-    return inputs
-      .slice(0, count)
-      .map((input) => {
-        const value = input.value.trim();
-        return value === "" ? null : Number(value);
-      })
-      .filter((value) => Number.isFinite(value));
-  };
-
-  const collectRoomPriorities = (selfArranged) => {
-    if (selfArranged) return [];
-    return roomSelectIds
-      .map((id) => {
-        const select = document.getElementById(id);
-        if (!select || !select.value) return null;
-        const option = select.selectedOptions[0];
-        return {
-          id: select.value,
-          label: option ? option.textContent.trim() : ""
-        };
-      })
-      .filter(Boolean);
-  };
-
-  const resetRoomSelects = () => {
-    roomSelectIds.forEach((id) => {
-      const select = document.getElementById(id);
-      if (select) {
-        select.selectedIndex = 0;
-        select.dispatchEvent(new Event("change"));
-      }
-    });
-  };
-
-  const resetFormUI = () => {
-    resetRoomSelects();
-    const kidsCountField = form?.querySelector("#kidsCount");
-    if (kidsCountField) {
-      kidsCountField.value = "0";
-      kidsCountField.dispatchEvent(new Event("input"));
-    }
-    const selfArranged = document.getElementById("selfArranged");
-    if (selfArranged) {
-      selfArranged.checked = false;
-      selfArranged.dispatchEvent(new Event("change"));
-    }
-  };
-
-  if (form) {
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      clearMessages();
-
-      if (!form.reportValidity()) return;
-
-      setButtonState(true);
-
-      const formData = new FormData(form);
-      const name = (formData.get("name") || "").toString().trim();
-      const email = (formData.get("email") || "").toString().trim();
-      const phone = (formData.get("handy") || "").toString().trim();
-      const address = (formData.get("address") || "").toString().trim();
-      const notes = (formData.get("nachricht") || "").toString().trim();
-      const kidsCount = Number(formData.get("kidsCount") || 0);
-      const selfArranged = formData.get("selfArranged") === "on";
-
-      const kidsAges = collectKidsAges(kidsCount);
-      const roomPriorities = collectRoomPriorities(selfArranged);
-
-      const payload = {
-        name,
-        email,
-        phone,
-        address,
-        kids: {
-          count: kidsCount,
-          ages: kidsAges
-        },
-        roomSelection: {
-          selfArranged,
-          priorities: roomPriorities
-        },
-        notes,
-        createdAt: serverTimestamp(),
-        submittedAtLocal: new Date().toISOString(),
-        metadata: {
-          userAgent: navigator.userAgent,
-          language: navigator.language || "de"
+      const setButtonState = (isSubmitting) => {
+        if (!submitButton) return;
+        submitButton.disabled = isSubmitting;
+        submitButton.classList.toggle("is-loading", isSubmitting);
+        if (submitLabel && submitLoading) {
+          submitLabel.hidden = isSubmitting;
+          submitLoading.hidden = !isSubmitting;
         }
       };
 
-      try {
-        await addDoc(collection(db, "anmeldungen"), payload);
-
-        form.reset();
-        resetFormUI();
-
-        if (successMessage) {
-          successMessage.hidden = false;
-          successMessage.textContent = "Vielen Dank! Deine Anmeldung wurde erfolgreich gespeichert.";
-          successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-      } catch (error) {
-        console.error("Fehler beim Speichern der Anmeldung:", error);
+      const clearMessages = () => {
+        if (successMessage) successMessage.hidden = true;
         if (errorMessage) {
-          errorMessage.textContent = "Ups, das hat leider nicht geklappt. Bitte versuche es erneut oder melde dich direkt bei uns.";
-          errorMessage.hidden = false;
-          errorMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+          errorMessage.hidden = true;
+          errorMessage.textContent = "";
         }
-      } finally {
-        setButtonState(false);
-      }
-    });
-  }
-</script>
+      };
 
-<!-- Dein normales Skript (falls vorhanden) -->
-<script src="script.js"></script>
+      const collectKidsAges = (count) => {
+        const inputs = Array.from(document.querySelectorAll(".kids-ages input[type='number']"));
+        return inputs
+          .slice(0, count)
+          .map((input) => {
+            const value = input.value.trim();
+            return value === "" ? null : Number(value);
+          })
+          .filter((value) => Number.isFinite(value));
+      };
+
+      const collectRoomPriorities = (selfArranged) => {
+        if (selfArranged) return [];
+        return roomSelectIds
+          .map((id) => {
+            const select = document.getElementById(id);
+            if (!select || !select.value) return null;
+            const option = select.selectedOptions[0];
+            return {
+              id: select.value,
+              label: option ? option.textContent.trim() : ""
+            };
+          })
+          .filter(Boolean);
+      };
+
+      const resetRoomSelects = () => {
+        roomSelectIds.forEach((id) => {
+          const select = document.getElementById(id);
+          if (select) {
+            select.selectedIndex = 0;
+            select.dispatchEvent(new Event("change"));
+          }
+        });
+      };
+
+      const resetFormUI = () => {
+        resetRoomSelects();
+        const kidsCountField = form?.querySelector("#kidsCount");
+        if (kidsCountField) {
+          kidsCountField.value = "0";
+          kidsCountField.dispatchEvent(new Event("input"));
+        }
+        const selfArranged = document.getElementById("selfArranged");
+        if (selfArranged) {
+          selfArranged.checked = false;
+          selfArranged.dispatchEvent(new Event("change"));
+        }
+      };
+
+      if (form) {
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          clearMessages();
+
+          if (!form.reportValidity()) return;
+
+          setButtonState(true);
+
+          const formData = new FormData(form);
+          const name = (formData.get("name") || "").toString().trim();
+          const email = (formData.get("email") || "").toString().trim();
+          const phone = (formData.get("handy") || "").toString().trim();
+          const address = (formData.get("address") || "").toString().trim();
+          const notes = (formData.get("nachricht") || "").toString().trim();
+          const kidsCount = Number(formData.get("kidsCount") || 0);
+          const selfArranged = formData.get("selfArranged") === "on";
+
+          const kidsAges = collectKidsAges(kidsCount);
+          const roomPriorities = collectRoomPriorities(selfArranged);
+
+          const payload = {
+            name,
+            email,
+            phone,
+            address,
+            kids: {
+              count: kidsCount,
+              ages: kidsAges
+            },
+            roomSelection: {
+              selfArranged,
+              priorities: roomPriorities
+            },
+            notes,
+            createdAt: serverTimestamp(),
+            submittedAtLocal: new Date().toISOString(),
+            metadata: {
+              userAgent: navigator.userAgent,
+              language: navigator.language || "de"
+            }
+          };
+
+          try {
+            await addDoc(collection(db, "anmeldungen"), payload);
+
+            form.reset();
+            resetFormUI();
+
+            if (successMessage) {
+              successMessage.hidden = false;
+              successMessage.textContent = "Vielen Dank! Deine Anmeldung wurde erfolgreich gespeichert.";
+              successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+          } catch (error) {
+            console.error("Fehler beim Speichern der Anmeldung:", error);
+            if (errorMessage) {
+              errorMessage.textContent = "Ups, das hat leider nicht geklappt. Bitte versuche es erneut oder melde dich direkt bei uns.";
+              errorMessage.hidden = false;
+              errorMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+          } finally {
+            setButtonState(false);
+          }
+        });
+      }
+    </script>
+
+    <!-- Dein normales Skript (falls vorhanden) -->
+    <script src="script.js"></script>
 </body>
 </html>
-
