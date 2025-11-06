@@ -96,33 +96,7 @@ updateCountdown();
 // ====== ROOMS & APARTMENTS ======
 const ROOM_CATEGORIES = [
   {
-    id: "VP-STD",
-    hotel: "Villa Porta",
-    type: "Standardzimmer",
-    priceFlex: 347,
-    priceNonRef: 314,
-    currency: "€",
-    per: "Nacht (Frühstück inkl.)",
-    capacity: "1–2 Erw.",
-    count: 2,
-    dates: "nach Absprache",
-    notes: "Babybett: nein (nur nicht Standard)"
-  },
-  {
-    id: "VP-PAT",
-    hotel: "Villa Porta",
-    type: "Zimmer mit Patio",
-    priceFlex: 367,
-    priceNonRef: 329,
-    currency: "€",
-    per: "Nacht (Frühstück inkl.)",
-    capacity: "1–2 Erw.",
-    count: 2,
-    dates: "nach Absprache",
-    notes: "Babybett möglich (bis 4 J., gratis)"
-  },
-  {
-    id: "VP-PLUS",
+    id: "villa-porta-plus-room",
     hotel: "Villa Porta",
     type: "Doppelzimmer (Plus Room)",
     priceFlex: 399,
@@ -130,12 +104,12 @@ const ROOM_CATEGORIES = [
     currency: "€",
     per: "Nacht (Frühstück inkl.)",
     capacity: "1–2 Erw.",
-    count: 5,
+    count: 4,
     dates: "nach Absprache",
     notes: "Babybett möglich (bis 4 J., gratis)"
   },
   {
-    id: "VP-SUP",
+    id: "villa-porta-superior-room",
     hotel: "Villa Porta",
     type: "Superior Room",
     priceFlex: 409,
@@ -148,7 +122,7 @@ const ROOM_CATEGORIES = [
     notes: "Babybett möglich (bis 4 J., gratis)"
   },
   {
-    id: "VP-EMO",
+    id: "villa-porta-emotion-room",
     hotel: "Villa Porta",
     type: "Emotion Room",
     priceFlex: 437,
@@ -156,60 +130,36 @@ const ROOM_CATEGORIES = [
     currency: "€",
     per: "Nacht (Frühstück inkl.)",
     capacity: "1–2 Erw.",
-    count: 3,
+    count: 1,
     dates: "nach Absprache",
     notes: "Babybett möglich (bis 4 J., gratis)"
   },
   {
-    id: "VP-JS",
+    id: "villa-porta-junior-suite",
     hotel: "Villa Porta",
     type: "Junior Suite",
     priceFlex: 549,
     priceNonRef: 494,
     currency: "€",
     per: "Nacht (Frühstück inkl.)",
-    capacity: "1–2 Erw. (+evtl. Kind)",
+    capacity: "1–2 Erw. (bis max. 4 Personen mit Aufpreis)",
     count: 1,
     dates: "nach Absprache",
     notes: "Babybett möglich (bis 4 J., gratis)"
   },
   {
-    id: "VP-JSB",
+    id: "villa-porta-junior-suite-balkon",
     hotel: "Villa Porta",
     type: "Junior Suite mit Balkon",
-    priceFlex: 549,
-    priceNonRef: 494,
+    priceFlex: 599,
+    priceNonRef: 544,
     currency: "€",
     per: "Nacht (Frühstück inkl.)",
-    capacity: "1–2 Erw. (+evtl. Kind)",
+    capacity: "1–2 Erw. (bis max. 4 Personen mit Aufpreis)",
     count: 1,
     dates: "nach Absprache",
     notes: "Babybett möglich (bis 4 J., gratis)"
   },
-  {
-    id: "HI-DZ",
-    hotel: "Hotel Internazionale Luino (H1)",
-    type: "Doppel-/Zweibettzimmer",
-    priceFlex: 294,
-    currency: "CHF",
-    per: "Nacht (Frühstück inkl.)",
-    capacity: "1–2 Erw.",
-    count: 8,
-    dates: "21.–23. Aug (2 Nächte)",
-    notes: "Luino (südlich von Villa Porta (Colmegna), 3.8km oder 5min mit dem Auto)"
-  },
-  {
-    id: "HTI-DZ",
-    hotel: "Hotel Torre Imperiale (H2)",
-    type: "Doppel-/Zweibettzimmer",
-    priceFlex: 180,
-    currency: "CHF",
-    per: "Nacht (Frühstück inkl.)",
-    capacity: "1–2 Erw.",
-    count: 10,
-    dates: "21.–23. Aug (2 Nächte)",
-    notes: " Veddasca (nördlich von Villa Porta (Colmegna), 1.5km oder 2min mit dem Auto)"
-  }
 ];
 
 function renderRoomsGrid(categories = ROOM_CATEGORIES) {
@@ -226,12 +176,10 @@ function renderRoomsGrid(categories = ROOM_CATEGORIES) {
     card.className = "room-card";
     card.dataset.roomId = category.id;
     card.innerHTML = `
-      <div class="room-badge">${category.id}</div>
       <h3>${category.hotel}</h3>
       <p><strong>${category.type}</strong></p>
       <p class="rates">${priceInfo} / ${category.per}</p>
       <p><strong>Belegung:</strong> ${category.capacity}</p>
-      <p><strong>Vorhanden:</strong> ${category.count} Zimmer</p>
       <p><strong>Zeitraum:</strong> ${category.dates}</p>
       <p class="small">${category.notes || ""}</p>
     `;
@@ -242,7 +190,7 @@ function renderRoomsGrid(categories = ROOM_CATEGORIES) {
 function buildRoomOptions(categories = ROOM_CATEGORIES) {
   return categories.map(category => ({
     value: category.id,
-    label: `${category.id} · ${category.hotel} · ${category.type}`
+    label: category.hotel + " - " + category.type
   }));
 }
 
@@ -307,9 +255,15 @@ function initRoomSelects() {
   if (selects.length !== selectIds.length) return;
 
   const options = buildRoomOptions();
-  selects.forEach(select => {
+  selects.forEach((select, index) => {
     select.innerHTML = "";
     populateRoomSelect(select, options);
+    if (index >= 1) {
+      const selfManagedOption = document.createElement("option");
+      selfManagedOption.value = "__SELF_MANAGED__";
+      selfManagedOption.textContent = "Ich kümmere mich selbst (kein Zimmer nötig)";
+      select.appendChild(selfManagedOption);
+    }
   });
 
   attachRoomCardInteractions(selects);
@@ -359,7 +313,7 @@ function initKidsAges() {
       const wrap = document.createElement('div');
       const label = document.createElement('label');
       label.setAttribute('for', `kidAge${i}`);
-      label.textContent = `Alter Kind ${i}:`;
+      label.textContent = `Alter Kind ${i} (Stand Aug. 26):`;
 
       const input = document.createElement('input');
       input.type = 'number';
@@ -387,3 +341,4 @@ document.addEventListener('DOMContentLoaded', () => {
   initRoomSelects();
   initKidsAges();
 });
+
