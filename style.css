@@ -695,7 +695,7 @@ footer {
   margin-top: .9rem;
   flex-shrink: 0;
   accent-color: var(--color-accent);
-  transform: translateY(25px); /* Quadrat ein Stück nach unten setzen */
+  transform: translateY(5px); /* Quadrat ein Stück nach unten setzen */
 }
 
 .self-arranged-note {
@@ -707,6 +707,13 @@ footer {
   color: var(--color-muted);
   font-size: .9rem;
   line-height: 1.5;
+}
+
+/* Keep the checkbox horizontally aligned with the label text */
+.self-arranged-toggle input {
+  margin: 0;
+  transform: none;
+  align-self: center;
 }
 
 /* (Optional) schöneres <select> Verhalten auf Mobile belassen */
@@ -730,7 +737,8 @@ footer {
     .text-bild-container { flex-direction: column; align-items: flex-start; text-align: left; }
     .text-bild-container img { width: 100%; max-width: 100%; }
     .trauzeugen-container { flex-direction: column; gap: 2rem; align-items: center; }
-    .rooms-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+    .rooms-grid { grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 0.75rem; }
+    /*  ========== Oben vielleicht 0.75 ändern ========== */
     .room-card { padding: 1rem; }
     .slideshow-container img { max-width: 100%; border-radius: 10px; }
     .info-grid { grid-template-columns: 1fr; }
