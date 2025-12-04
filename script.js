@@ -96,32 +96,6 @@ updateCountdown();
 // ====== ROOMS & APARTMENTS ======
 const ROOM_CATEGORIES = [
   {
-    id: "villa-porta-plus-room",
-    hotel: "Villa Porta",
-    type: "Doppelzimmer (Plus Room)",
-    priceFlex: 399,
-    priceNonRef: 359,
-    currency: "€",
-    per: "Nacht (Frühstück inkl.)",
-    capacity: "1–2 Erw.",
-    count: 4,
-    dates: "nach Absprache",
-    notes: "Babybett möglich (bis 4 J., gratis)"
-  },
-  {
-    id: "villa-porta-superior-room",
-    hotel: "Villa Porta",
-    type: "Superior Room",
-    priceFlex: 409,
-    priceNonRef: 369,
-    currency: "€",
-    per: "Nacht (Frühstück inkl.)",
-    capacity: "1–2 Erw.",
-    count: 1,
-    dates: "nach Absprache",
-    notes: "Babybett möglich (bis 4 J., gratis)"
-  },
-  {
     id: "villa-porta-emotion-room",
     hotel: "Villa Porta",
     type: "Emotion Room",
@@ -247,7 +221,7 @@ function attachRoomCardInteractions(selects) {
 }
 
 function initRoomSelects() {
-  const selectIds = ["prio1", "prio2", "prio3"];
+  const selectIds = ["Zimmerkategorie"];
   const selects = selectIds
     .map(id => document.getElementById(id))
     .filter(Boolean);
@@ -335,10 +309,61 @@ function initKidsAges() {
   rebuild(); // Initialer Aufbau (z.B. 0)
 }
 
+function initLightbox() {
+  const lightbox = document.getElementById("imageLightbox");
+  const lightboxImg = lightbox?.querySelector("img");
+  const closeBtn = lightbox?.querySelector(".lightbox-close");
+  const triggers = document.querySelectorAll("[data-lightbox-src]");
+  if (!lightbox || !lightboxImg || triggers.length === 0) return;
+
+  const open = (src, alt) => {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || "";
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  const close = () => {
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+    lightboxImg.src = "";
+    document.body.style.overflow = "";
+  };
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener("click", () => {
+      const src = trigger.getAttribute("data-lightbox-src") || "";
+      if (!src) return;
+      const alt =
+        trigger.getAttribute("aria-label") ||
+        trigger.getAttribute("alt") ||
+        trigger.querySelector?.("img")?.alt ||
+        "";
+      open(src, alt);
+    });
+  });
+
+  closeBtn?.addEventListener("click", close);
+
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      close();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+      close();
+    }
+  });
+}
+
 // ====== Init alles nach DOM-Load ======
 document.addEventListener('DOMContentLoaded', () => {
   renderRoomsGrid();
   initRoomSelects();
   initKidsAges();
+  initLightbox();
 });
 

@@ -44,17 +44,27 @@
     </header>
 
     <main class="content-wrapper">
-        <section id="location">
+        <section id="location" class="location-section">
             <h2>Location: Relais Villa Porta</h2>
-            <div class="text-bild-container">
-                <img src="Pictures/Villa Porta Eingang.jpg" alt="Chappeli" width="400">
-                <p>
-                    Unser besonderer Ort: Die Villa Porta in Italien. Sie befindet sich kurz nach der Grenze zum Tessin am Ufer des Lago Maggiore.
-                    Für unseren grossen Tag haben wir ein Plätzchen ausgesucht, das uns sofort verzaubert hat.
-                    Die romantische Villa Porta in Colmegna bietet eine traumhafte Kulisse und eine Atmosphäre, wie wir es mögen – persönlich, herzlich und unvergesslich.
-                    Hier möchten wir mit euch feiern, lachen, tanzen und Erinnerungen schaffen, die für immer bleiben.
-                    Wir freuen uns darauf, dieses kleine Stückchen Paradies mit euch zu teilen.
-                </p>
+            <div class="location-grid">
+                <div class="location-images">
+                    <div class="location-img primary">
+                        <img src="Pictures/Villa Porta Eingang.jpg" alt="Chappeli" width="400">
+                    </div>
+                    <button class="location-img secondary" type="button" data-lightbox-src="Pictures/Villa Porta Lake maggiore_300.jpg" aria-label="Bild gross ansehen">
+                        <img src="Pictures/Villa Porta Lake maggiore_300.jpg" alt="Chappeli" width="400">
+                        <span class="zoom-hint">Zum Vergrößern tippen</span>
+                    </button>
+                </div>
+                <div class="location-text">
+                    <p>
+                        Unser besonderer Ort: Die Villa Porta in Italien. Sie befindet sich kurz nach der Grenze zum Tessin am Ufer des Lago Maggiore.
+                        Für unseren grossen Tag haben wir ein Plätzchen ausgesucht, das uns sofort verzaubert hat.
+                        Die romantische Villa Porta in Colmegna bietet eine traumhafte Kulisse und eine Atmosphäre, wie wir es mögen – persönlich, herzlich und unvergesslich.
+                        Hier möchten wir mit euch feiern, lachen, tanzen und Erinnerungen schaffen, die für immer bleiben.
+                        Wir freuen uns darauf, dieses kleine Stückchen Paradies mit euch zu teilen.
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -138,8 +148,8 @@
         <section id="rooms">
             <h2>Auswahl Hotelzimmer</h2>
             <p>
-                Es gibt die Möglichkeit, ein Zimmer in der Villa Porta zu buchen. <strong>Diese sind aber leider nur bis am 1. Dezember fix für uns blockiert!</strong> 
-                Falls ihr eines bei der Anmeldung auswählt, kontaktiert euch die Villa direkt nach eurer Anmeldung per E-Mail (Zahlungsinfos folgen).
+                Es gibt die Möglichkeit, ein Zimmer in der Villa Porta anzufragen. Ob die Zimmer noch frei sind, müssen wir aber dann erst abklären. 
+                Falls ihr eines bei der Anmeldung auswählt, und es noch frei ist, kontaktiert euch die Villa direkt nach eurer Anmeldung per E-Mail (Zahlungsinfos folgen).
                 Da die Zimmer in der Hochsaison eher teuer sind, gibt es die Möglichhkeit, selber etwas in der Umgebung zu suchen. Es hat diverse AirB&B's oder andere 
                 Hotels in der Nachbarsumgebung. 
                 <br>
@@ -183,7 +193,7 @@
                 <article class="info-card highlight">
                     <h3>Handys bewusst nutzen</h3>
                     <p>
-                        Wir freuen uns mehr über echte Momente als über Displays. Fotos macht unser Fotograf – ihr dürft einfach
+                        Wir freuen uns mehr über echte Momente als über Displays. Fotos macht unsere Fotografin – ihr dürft einfach
                         geniessen.
                     </p>
                 </article>
@@ -287,7 +297,7 @@
                 <div id="kidsAgesContainer" class="kids-ages"></div>
                 <br/>
 
-                <label for="address">Genaue Wohnadresse (Stand Aug. 26):</label><br/>
+                <label for="address">Genaue Wohnadresse:</label><br/>
                 <input type="text" id="address" name="address" autocomplete="street-address" required/><br/><br/>
 
                 <label for="fridayDinner">Ich bin am Freitagabend beim Dinner dabei?</label><br/>
@@ -298,16 +308,11 @@
                 </select><br/><br/>
 
                 <fieldset class="prio-fieldset">
-                    <legend>Prioritäten - Zimmer</legend>
+                    <legend>Villa Porta - Zimmer</legend>
 
-                    <label for="prio1">Prio 1:</label><br/>
-                    <select id="prio1" name="prio1" required></select><br/><br/>
+                    <label for="Zimmerkategorie">Zimmerkategorie:</label><br/>
+                    <select id="Zimmerkategorie" name="Zimmerkategorie" required></select><br/><br/>
 
-                    <label for="prio2">Prio 2:</label><br/>
-                    <select id="prio2" name="prio2" required></select><br/><br/>
-
-                    <label for="prio3">Prio 3:</label><br/>
-                    <select id="prio3" name="prio3" required></select><br/><br/>
 
                     <div class="self-arranged">
                         <label class="self-arranged-toggle">
@@ -344,6 +349,11 @@
             </div>
         </section>
     </main>
+
+    <div class="lightbox" id="imageLightbox" aria-hidden="true">
+        <button type="button" class="lightbox-close" aria-label="Schliessen">&times;</button>
+        <img src="" alt="">
+    </div>
 
     <footer>
         &copy; 2025 &amp; 2026 - Luana &amp; Yannick - Colmegna
@@ -527,4 +537,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
