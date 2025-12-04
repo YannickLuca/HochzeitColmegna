@@ -382,7 +382,8 @@
       const submitButton = form?.querySelector(".submit-button");
       const submitLabel = submitButton?.querySelector(".submit-label");
       const submitLoading = submitButton?.querySelector(".submit-loading");
-      const roomSelectIds = ["prio1", "prio2", "prio3"];
+      // Matches the single Zimmerkategorie select rendered by script.js
+      const roomSelectIds = ["Zimmerkategorie"];
 
       const setButtonState = (isSubmitting) => {
         if (!submitButton) return;
