@@ -67,8 +67,8 @@ if (slideshowElement) {
 // Countdown zur Hochzeit
 const countdownElement = document.getElementById("countdown");
 
-// Ziel-Datum (26. Juni 2026, 15:45 Uhr)
-const targetDate = new Date("June 26, 2026 15:45:00").getTime();
+// Ziel-Datum: 22. August 2026, 16:00 Uhr in der Schweiz (CEST, UTC+02:00)
+const targetDate = new Date("2026-08-22T16:00:00+02:00").getTime();
 
 function updateCountdown() {
   const now = new Date().getTime();
