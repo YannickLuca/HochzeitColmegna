@@ -1,0 +1,21 @@
+# Lokale RAW- und Arbeitsdateien
+*.CR2
+*.cr2
+*.docx
+~$*
+
+# Fotosammlungen und lokale Sicherungen
+Favoriten_Gusti_Luanke/
+Zugross/
+Local_Originals/
+
+# Nicht verwendete Entwurfsdateien
+Einladung Foto.jpg
+Pictures/Antrag2.jpg
+Pictures/Grün und Weiß Pflanzen Rustikal Floral Hochzeit Verschiebung Ankündigung*.png
+Pictures/VillaPorta suite.webp
+
+# Temporäre Betriebssystem- und Prüfdateien
+.tmp*/
+Thumbs.db
+.DS_Store
