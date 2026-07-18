@@ -264,49 +264,7 @@ function initRoomSelects() {
     selfArranged.addEventListener("change", applyToggle);
   }
 
-  const form = document.getElementById("anmeldeFormular");
-  if (form) {
-    form.addEventListener("reset", () => {
-      setTimeout(applyToggle, 0);
-    });
-  }
-
   applyToggle();
-}
-
-// ====== Kinder-Altersfelder dynamisch ======
-function initKidsAges() {
-  const countInput = document.getElementById('kidsCount');
-  const container = document.getElementById('kidsAgesContainer');
-  if (!countInput || !container) return;
-
-  const rebuild = () => {
-    const n = Math.max(0, Math.min(10, Number(countInput.value) || 0));
-    container.innerHTML = "";
-    for (let i = 1; i <= n; i++) {
-      const wrap = document.createElement('div');
-      const label = document.createElement('label');
-      label.setAttribute('for', `kidAge${i}`);
-      label.textContent = `Alter Kind ${i} (Stand Aug. 26):`;
-
-      const input = document.createElement('input');
-      input.type = 'number';
-      input.id = `kidAge${i}`;
-      input.name = `kidAge${i}`;
-      input.min = '0';
-      input.max = '17';
-      input.step = '1';
-      input.required = true;
-
-      wrap.appendChild(label);
-      wrap.appendChild(document.createElement('br'));
-      wrap.appendChild(input);
-      container.appendChild(wrap);
-    }
-  };
-
-  countInput.addEventListener('input', rebuild);
-  rebuild(); // Initialer Aufbau (z.B. 0)
 }
 
 function initLightbox() {
@@ -361,9 +319,6 @@ function initLightbox() {
 
 // ====== Init alles nach DOM-Load ======
 document.addEventListener('DOMContentLoaded', () => {
-  renderRoomsGrid();
-  initRoomSelects();
-  initKidsAges();
   initLightbox();
 });
 

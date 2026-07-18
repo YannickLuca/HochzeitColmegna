@@ -39,7 +39,6 @@
             <a href="#rooms">Übernachtung</a>
             <a href="#trauzeugen">Trauzeugen</a>
             <a href="#allgemeine-infos">Infos</a>
-            <a href="#anmeldeFormular">Anmeldung</a>
         </nav>
     </header>
 
@@ -154,7 +153,10 @@
                 <br>
                 <strong>-> Tipp:</strong> Hotel Internazionale Luino oder Hotel Torre Imperiale liegen nicht weit und haben günstigere Angebote.
             </p>
-            <p>Für Nicht-Hotelgäste sind wir noch in Abklärung, ob man trotzdem im Hotel frühstücken kann.</p>
+            <p>
+                Für alle Nicht-Hotelgäste, die am Sonntagmorgen einen Brunch in der Villa Porta (auf eigene Kosten) wünschen:
+                Bitte meldet euch bis spätestens 31. Juli 2026 bei unserem Trauzeugen Philipp.
+            </p>
         </section>
 
         <section id="trauzeugen">
@@ -191,13 +193,6 @@
                     <p>
                         Wir freuen uns mehr über echte Momente als über Displays. Fotos macht unsere Fotografin – ihr dürft einfach
                         geniessen.
-                    </p>
-                </article>
-                <article class="info-card highlight">
-                    <h3>Kleinkinder sind herzlich willkommen</h3>
-                    <p>
-                        Unsere kleinen Gäste dürfen mitfeiern, planschen und spielen. Bitte tragt Kinder im Formular ein, damit wir
-                        Sitzplätze und Kinderportionen besser planen können.
                     </p>
                 </article>
                 <article class="info-card highlight">
@@ -271,52 +266,6 @@
             <p>Weitere Ausflüge folgen.</p>
         </section>
 -->
-        <!-- ===================== ANMELDEFORMULAR ===================== -->
-        <section class="form-section">
-            <h2 class="form-title">Anmeldeformular</h2>
-
-            <form id="anmeldeFormular" class="guest-form" autocomplete="on">
-                <label for="name">Name:</label><br/>
-                <input type="text" id="name" name="name" autocomplete="name" required/><br/><br/>
-
-                <label for="email">E-Mail-Adresse:</label><br/>
-                <input type="email" id="email" name="email" autocomplete="email" required/><br/><br/>
-
-                <label for="handy">Handynummer:</label><br/>
-                <input type="tel" id="handy" name="handy" inputmode="tel" autocomplete="tel" required/><br/><br/>
-
-                <label for="kidsCount">Kinder - Anzahl (Stand Aug. 26):</label><br/>
-                <input type="number" id="kidsCount" name="kidsCount" min="0" max="10" step="1" value="0" required/>
-                <small>(Altersfelder erscheinen automatisch)</small>
-                <div id="kidsAgesContainer" class="kids-ages"></div>
-                <br/>
-
-                <label for="address">Genaue Wohnadresse:</label><br/>
-                <input type="text" id="address" name="address" autocomplete="street-address" required/><br/><br/>
-
-                <label for="fridayDinner">Ich bin am Freitagabend beim Dinner dabei?</label><br/>
-                <select id="fridayDinner" name="fridayDinner" required>
-                    <option value="" disabled selected>Bitte auswählen</option>
-                    <option value="Ja">Ja</option>
-                    <option value="Nein">Nein</option>
-                </select>
-                <br/><br/>
-
-                <label for="nachricht">Ernährung/Allergien oder Nachricht:</label><br/>
-                <textarea id="nachricht" name="nachricht" rows="3" placeholder="z. B. vegetarisch, Nussallergie "></textarea><br/><br/>
-
-                <button type="submit" class="submit-button" data-default="Anmelden" data-loading="Wird gesendet ">
-                    <span class="submit-label">Anmelden</span>
-                    <span class="submit-loading" aria-hidden="true">Wird gesendet </span>
-                </button>
-            </form>
-        </section>
-
-        <p id="erfolgsmeldung" class="form-message success" role="status" aria-live="polite" hidden>
-            Vielen Dank! Deine Anmeldung wurde erfolgreich gespeichert.
-        </p>
-        <p id="fehlermeldung" class="form-message error" role="alert" aria-live="assertive" hidden></p>
-
         <section id="abschluss" class="section-centered closing-section">
             <h3>Wir freuen uns mit euch anzustossen! Bis dann!</h3>
             <div class="slideshow-container">
@@ -331,185 +280,8 @@
     </div>
 
     <footer>
-        &amp; 2026 - Luana &amp; Yannick - Colmegna
+        2026 - Luana &amp; Yannick - Colmegna
     </footer>
-
-    <!-- ========= Firebase (Form Handling) ========= -->
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-      import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
-
-      const firebaseConfig = {
-        apiKey: "AIzaSyD0ZTfty-ZBe_bbR1vZyMk4ufE1MndvX1c",
-        authDomain: "hochzeitcolmegna.firebaseapp.com",
-        projectId: "hochzeitcolmegna",
-        storageBucket: "hochzeitcolmegna.firebasestorage.app",
-        messagingSenderId: "57965593719",
-        appId: "1:57965593719:web:eae806a82f5d9bc211b272"
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-
-      const form = document.getElementById("anmeldeFormular");
-      const successMessage = document.getElementById("erfolgsmeldung");
-      const errorMessage = document.getElementById("fehlermeldung");
-      const submitButton = form?.querySelector(".submit-button");
-      const submitLabel = submitButton?.querySelector(".submit-label");
-      const submitLoading = submitButton?.querySelector(".submit-loading");
-      // Matches the single Zimmerkategorie select rendered by script.js
-      const roomSelectIds = ["Zimmerkategorie"];
-
-      const setButtonState = (isSubmitting) => {
-        if (!submitButton) return;
-        submitButton.disabled = isSubmitting;
-        submitButton.classList.toggle("is-loading", isSubmitting);
-        if (submitLabel && submitLoading) {
-          submitLabel.hidden = isSubmitting;
-          submitLoading.hidden = !isSubmitting;
-        }
-      };
-
-      const clearMessages = () => {
-        if (successMessage) successMessage.hidden = true;
-        if (errorMessage) {
-          errorMessage.hidden = true;
-          errorMessage.textContent = "";
-        }
-      };
-
-      const collectKidsAges = (count) => {
-        const inputs = Array.from(document.querySelectorAll(".kids-ages input[type='number']"));
-        return inputs
-          .slice(0, count)
-          .map((input) => {
-            const value = input.value.trim();
-            return value === "" ? null : Number(value);
-          })
-          .filter((value) => Number.isFinite(value));
-      };
-
-      const collectRoomPriorities = (selfArranged) => {
-        if (selfArranged) return [];
-        return roomSelectIds
-          .map((id) => {
-            const select = document.getElementById(id);
-            if (!select || !select.value) return null;
-            const option = select.selectedOptions[0];
-            return {
-              id: select.value,
-              label: option ? option.textContent.trim() : ""
-            };
-          })
-          .filter(Boolean);
-      };
-
-      const resetRoomSelects = () => {
-        roomSelectIds.forEach((id) => {
-          const select = document.getElementById(id);
-          if (select) {
-            select.selectedIndex = 0;
-            select.dispatchEvent(new Event("change"));
-          }
-        });
-      };
-
-      const resetFormUI = () => {
-        resetRoomSelects();
-        const kidsCountField = form?.querySelector("#kidsCount");
-        if (kidsCountField) {
-          kidsCountField.value = "0";
-          kidsCountField.dispatchEvent(new Event("input"));
-        }
-        const dinnerField = form?.querySelector("#fridayDinner");
-        if (dinnerField) {
-          dinnerField.value = "";
-          dinnerField.selectedIndex = 0;
-        }
-        const roomStayField = form?.querySelector("#roomStay");
-        if (roomStayField) {
-          roomStayField.value = "";
-        }
-        const selfArranged = document.getElementById("selfArranged");
-        if (selfArranged) {
-          selfArranged.checked = false;
-          selfArranged.dispatchEvent(new Event("change"));
-        }
-      };
-
-      if (form) {
-        form.addEventListener("submit", async (event) => {
-          event.preventDefault();
-          clearMessages();
-
-          if (!form.reportValidity()) return;
-
-          setButtonState(true);
-
-          const formData = new FormData(form);
-          const name = (formData.get("name") || "").toString().trim();
-          const email = (formData.get("email") || "").toString().trim();
-          const phone = (formData.get("handy") || "").toString().trim();
-          const address = (formData.get("address") || "").toString().trim();
-          const fridayDinner = (formData.get("fridayDinner") || "").toString().trim();
-          const notes = (formData.get("nachricht") || "").toString().trim();
-          const kidsCount = Number(formData.get("kidsCount") || 0);
-          const selfArranged = formData.get("selfArranged") === "on";
-          const roomStay = (formData.get("roomStay") || "").toString().trim();
-
-          const kidsAges = collectKidsAges(kidsCount);
-          const roomPriorities = collectRoomPriorities(selfArranged);
-
-          const payload = {
-            name,
-            email,
-            phone,
-            address,
-            fridayDinner,
-            kids: {
-              count: kidsCount,
-              ages: kidsAges
-            },
-            roomSelection: {
-              selfArranged,
-              priorities: roomPriorities,
-              stayInfo: roomStay
-            },
-            notes,
-            createdAt: serverTimestamp(),
-            submittedAtLocal: new Date().toISOString(),
-            metadata: {
-              userAgent: navigator.userAgent,
-              language: navigator.language || "de"
-            }
-          };
-
-          try {
-            await addDoc(collection(db, "anmeldungen"), payload);
-
-            form.reset();
-            resetFormUI();
-
-            if (successMessage) {
-              successMessage.hidden = false;
-              successMessage.textContent = "Vielen Dank! Deine Anmeldung wurde erfolgreich gespeichert.";
-              successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
-            }
-          } catch (error) {
-            console.error("Fehler beim Speichern der Anmeldung:", error);
-            if (errorMessage) {
-              errorMessage.textContent = "Ups, das hat leider nicht geklappt. Bitte versuche es erneut oder melde dich direkt bei uns.";
-              errorMessage.hidden = false;
-              errorMessage.scrollIntoView({ behavior: "smooth", block: "center" });
-            }
-          } finally {
-            setButtonState(false);
-          }
-        });
-      }
-    </script>
-
-    <!-- Dein normales Skript (falls vorhanden) -->
     <script src="script.js"></script>
 </body>
 </html>
